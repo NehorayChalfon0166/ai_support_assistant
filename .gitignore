@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.pyo
+
+.env
+.venv/
+env/
+
+.ipynb_checkpoints/
+data/raw/
+*.log
+.vscode/
+*.pkl
+*.h5
+*.pt
