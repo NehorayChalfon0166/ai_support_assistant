@@ -1,0 +1,20 @@
+name: ai_support_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - jupyterlab
+  - pandas
+  - numpy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - ipykernel
+  - pip
+  - pip:
+      - openai
+      - langchain
+      - sentence-transformers
+      - fastapi
+      - uvicorn
