@@ -22,7 +22,7 @@ MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
 TFIDF_VECTORIZER_PATH = MODEL_DIR / "tfidf_vectorizer.joblib"
 LABEL_ENCODER_PATH = MODEL_DIR / "label_encoder.joblib"
-MODEL_PATH = MODEL_DIR / "logistic_regression_model.joblib"
+MODEL_PATH = MODEL_DIR / "logistic_regression_model.joblib" # chose this model
 
 # --- Helper Functions ---
 def prepare_training_data(df_full, target_companies):

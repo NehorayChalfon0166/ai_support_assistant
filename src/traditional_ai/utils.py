@@ -7,7 +7,7 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-# Ensure NLTK resources are available
+# Ensure NLTK is available
 try:
     stopwords.words('english')
     word_tokenize("test")
@@ -25,10 +25,10 @@ def get_target_companies(df, top_n=10):
     1. From author_id of outbound (company) tweets.
     2. From most frequent @mentions in inbound (user) tweets that are actual companies.
     """
-    outbound_df = df[df['inbound'] == False].copy()
+    outbound_df = df[df['inbound'] == False]
     company_author_ids = set(outbound_df['author_id'].unique())
 
-    inbound_df = df[df['inbound'] == True].copy()
+    inbound_df = df[df['inbound'] == True]
     mentions = []
     for text in inbound_df['text']:
         mentions.extend(re.findall(r'@\w+', text))
