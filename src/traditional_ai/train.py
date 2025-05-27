@@ -1,5 +1,4 @@
 # src/traditional_ai/train.py
-import os
 from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -29,7 +28,7 @@ def prepare_training_data(df_full, target_companies):
     """Prepares training data by filtering and cleaning."""
     inbound_df = df_full[df_full['inbound']].copy()
     results = inbound_df['text'].apply(
-        lambda t: pd.Series(utils.extract_company_and_clean_text(t, target_companies))
+        lambda t: pd.Series(utils.extract_company_and_text(t, target_companies))
     )
     inbound_df[['extracted_company_label', 'text_for_feature']] = results
     inbound_df.dropna(subset=['extracted_company_label'], inplace=True)

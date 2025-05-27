@@ -21,10 +21,11 @@ TARGET_COMPANIES_FROM_TRAINING = list(label_encoder.classes_)
 def predict(raw_text: str):
 
     #dont need the label for predict
-    _, text_for_feature = utils.extract_company_and_clean_text(raw_text, TARGET_COMPANIES_FROM_TRAINING)
+    _, text_for_feature = utils.extract_company_and_text(raw_text, TARGET_COMPANIES_FROM_TRAINING)
     #like in train
     cleaned_text_for_feature = utils.general_text_cleaning(text_for_feature)
-    text_tfidf = tfidf_vectorizer.transform(cleaned_text_for_feature)
+    # wrap in list for TF-IDF transform
+    text_tfidf = tfidf_vectorizer.transform([cleaned_text_for_feature])
     
     # find the label
     predicted_label_encoded = model.predict(text_tfidf)
@@ -43,8 +44,8 @@ if __name__ == '__main__':
 
     for raw_text in sample_texts:
         prediction = predict(raw_text)
-    print(f"Input: \"{raw_text}\"")
-    if prediction:
-        print(f"Predicted Company: @{prediction}\n") # Assuming labels are stored without @
-    else:
-        print("Predicted Company: None (or input not suitable for model)\n")
+        print(f"Input: \"{raw_text}\"")
+        if prediction:
+            print(f"Predicted Company: @{prediction}\n") # Assuming labels are stored without @
+        else:
+            print("Predicted Company: None (or input not suitable for model)\n")

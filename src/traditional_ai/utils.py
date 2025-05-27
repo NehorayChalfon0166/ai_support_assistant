@@ -43,7 +43,7 @@ def get_target_companies(df, top_n=10):
     target_companies = [mention for mention, _ in mention_counts.most_common(top_n)]
     return target_companies
 
-def extract_company_and_clean_text(text, target_companies):
+def extract_company_and_text(text, target_companies):
     """
     Extracts the first valid company @-mention from the text and
     returns the company label and the text with the @-mention removed.
